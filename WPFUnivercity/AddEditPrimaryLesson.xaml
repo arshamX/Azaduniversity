@@ -1,0 +1,143 @@
+﻿<Window x:Class="WPFUnivercity.AddEditPrimaryLesson"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUnivercity"
+        xmlns:persianDateControls="clr-namespace:Mohsen.PersianDateControls;assembly=Mohsen.PersianDateControls"
+        mc:Ignorable="d"
+        
+        Title="اضافه کردن درس اصلی" Height="458" Width="658" ResizeMode="NoResize">
+    <Grid Background="#3f69e1">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="5*"/>
+            <RowDefinition Height="4*"/>
+        </Grid.RowDefinitions>
+        <Border Background="#7f9cec" Margin="2" BorderThickness="2" BorderBrush="White" Grid.Row="0">
+            <Grid Name="topbar">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="108*"/>
+                    <ColumnDefinition Width="118*"/>
+                    <ColumnDefinition Width="123*"/>
+                    <ColumnDefinition Width="127*"/>
+                    <ColumnDefinition Width="79*"/>
+                    <ColumnDefinition Width="94*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="5" HorizontalAlignment="Left" Margin="13,6,0,-6" Width="118">
+                    <Label FontFamily="Tahoma" Foreground="White" Content="جستوجو درس"/>
+                </StackPanel>
+                <StackPanel Grid.Column="4" HorizontalAlignment="Center" Margin="0,30,0,0" Width="74">
+                    <RadioButton Name="rbtnAll" Content="تمام دروس" Foreground="White" FontFamily="Tahoma" FlowDirection="RightToLeft" IsChecked="False" Checked="rbtnAll_Checked"/>
+                </StackPanel>
+                <StackPanel Grid.Column="3" HorizontalAlignment="Center" Margin="0,27,0,0" Width="110">
+                    <RadioButton Name="rbtnName" Content="بر اساس نام درس" Foreground="White" FontFamily="Tahoma" FlowDirection="RightToLeft" IsChecked="False" Checked="rbtnName_Checked"/>
+                    <TextBox Name="txtName" Background="WhiteSmoke" Margin="5,5,10,0" IsReadOnly="True" TextAlignment="Right"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2" HorizontalAlignment="Center" Margin="0,27,0,0" Width="108">
+                    <RadioButton Name="rbtnCode" Content="بر اساس کد درس" Foreground="White" FontFamily="Tahoma" FlowDirection="RightToLeft" IsChecked="False" Checked="rbtnCode_Checked"/>
+                    <TextBox Name="txtCode" Background="WhiteSmoke" Margin="5,5,10,0" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1" HorizontalAlignment="Center" Margin="0,27,0,0" Width="108">
+                    <RadioButton Name="rbtnGCode" Content="بر اساس کد گروه" Foreground="White" FontFamily="Tahoma" FlowDirection="RightToLeft" IsChecked="False" Checked="rbtnGCode_Checked"/>
+                    <TextBox Name="txtGCode" Background="WhiteSmoke" Margin="5,5,10,0" IsReadOnly="True"/>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Height="39" Width="68">
+                    <Button Padding="10" Name="btnSearch" Background="#FF3F69E1" Foreground="White" FontFamily="Tahoma" BorderBrush="White" BorderThickness="2" Content="جستوجو" Height="39" Click="btnSearch_Click" />
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Border Background="#7f9cec" Margin="2" BorderThickness="2" BorderBrush="White" Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="87*"></ColumnDefinition>
+                    <ColumnDefinition Width="476*"></ColumnDefinition>
+                    <ColumnDefinition Width="87*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <DataGrid Grid.Column="1" Name="dgLessons" CanUserAddRows="False" CanUserDeleteRows="False" CanUserSortColumns="True" IsReadOnly="True" SelectedCellsChanged="dgLessons_SelectedCellsChanged"/>
+            </Grid>
+        </Border>
+        <Border Background="#7f9cec" Margin="2" BorderThickness="2" BorderBrush="White" Grid.Row="2">
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="161*"/>
+                    <ColumnDefinition Width="197*"/>
+                    <ColumnDefinition Width="181*"/>
+                    <ColumnDefinition Width="103*"/>
+                </Grid.ColumnDefinitions>
+                <StackPanel Grid.Column="0" HorizontalAlignment="Left" Width="156">
+                    <DockPanel Width="156" Height="28">
+                        <Label FontFamily="Tahoma" Foreground="White" Content=" نام درس"/>
+                        <TextBox Name="txtNameD" Background="WhiteSmoke" Margin="3,0,0,0" Height="24" IsReadOnly="True"/>
+                    </DockPanel>
+                    <DockPanel Width="156" Height="28" Margin="0,10">
+                        <Label FontFamily="Tahoma" Foreground="White" Content=" کد درس"/>
+                        <TextBox Name="txtCodeD" Background="WhiteSmoke" Margin="3,0,0,0" Height="24" IsReadOnly="True"/>
+                    </DockPanel>
+                    <DockPanel Width="156" Height="28" >
+                        <Label FontFamily="Tahoma" Foreground="White" Content="تعداد واحد "/>
+                        <TextBox Name="txtVahed" Background="WhiteSmoke" Margin="3,0,0,0" Height="24" IsReadOnly="True"/>
+                    </DockPanel>
+                    <DockPanel Margin="0,10">
+                        <Label FontFamily="Tahoma" Foreground="White" Content="گروه"/>
+                        <TextBox Background="WhiteSmoke" IsReadOnly="True" Name="txtGroup" Margin="5,0,0,0"/>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel HorizontalAlignment="Center" Width="206" Grid.Column="1">
+                    <DockPanel>
+                        <Label FontFamily="Tahoma" Foreground="White" Content=" شماره کلاس"/>
+                        <TextBox Name="txtClassCode" Background="WhiteSmoke" Height="24" Width="126"/>
+                    </DockPanel>
+                    <DockPanel Margin="0,10">
+                        <Label FontFamily="Tahoma" Foreground="White" Content=" ساعت کلاس" Width="auto"/>
+                        <xctk:TimePicker Name="tpFirst" ShowDropDownButton="False" Width="50" Format="Custom" FormatString="HH:mm"/>
+                        <Label Content="تا" FontFamily="Tahoma" Foreground="White"/>
+                        <xctk:TimePicker Name="tpSecond" ShowDropDownButton="False" Width="50" Format="Custom" FormatString="HH:mm"/>
+                    </DockPanel>
+                    <DockPanel >
+                        <Label FontFamily="Tahoma" Foreground="White" Content="روز کلاس" Margin="5,0,0,0"/>
+                        <ComboBox Name="cbClassD" Width="101" Margin="-5,0,0,0">
+                            <ComboBoxItem>شنبه</ComboBoxItem>
+                            <ComboBoxItem>یک شنبه</ComboBoxItem>
+                            <ComboBoxItem>دو شنبه</ComboBoxItem>
+                            <ComboBoxItem>سه شنبه</ComboBoxItem>
+                            <ComboBoxItem>چهار شنبه</ComboBoxItem>
+                            <ComboBoxItem>پنج شنبه</ComboBoxItem>
+                            <ComboBoxItem>جمعه</ComboBoxItem>
+                        </ComboBox>
+                    </DockPanel>
+                    <DockPanel Margin="0,10">
+                        <Label FontFamily="Tahoma" Foreground="white" Content="ظرفیت اصلی"/>
+                        <xctk:IntegerUpDown  Name="nPopulation" Width="83" Margin="0,0,40,0" Background="WhiteSmoke"/>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="2">
+                    <DockPanel>
+                        <Label FontFamily="Tahoma" Foreground="White" Content="سانس امتحان"/>
+                        <ComboBox Name="cbSans">
+                            <ComboBoxItem>1</ComboBoxItem>
+                            <ComboBoxItem>2</ComboBoxItem>
+                            <ComboBoxItem>3</ComboBoxItem>
+                            <ComboBoxItem>4</ComboBoxItem>
+                        </ComboBox>
+                    </DockPanel>
+                    <DockPanel Margin="0,10">
+                        <Label FontFamily="Tahoma" Foreground="White" Content="تاریخ امتحان"/>
+                        <persianDateControls:PersianDatePicker Name="tpExamDate" Background="WhiteSmoke"/>
+                    </DockPanel>
+                    <DockPanel>
+                        <Label FontFamily="Tahoma" Foreground="White" Content="نام استاد"/>
+                        <ComboBox Name="cbTeacherName" SelectionChanged="cbTeacherName_SelectionChanged"/>
+                    </DockPanel>
+                </StackPanel>
+                <StackPanel Grid.Column="3" VerticalAlignment="Top" Height="45" Margin="11,90,9,0" Visibility="Visible" Name="dumy1">
+                    <Button Name="btnAdd" Padding="10" Background="#FF3F69E1" Foreground="White" FontFamily="Tahoma" BorderBrush="White" BorderThickness="2" Content="اضافه کردن" Height="39" Click="btnAdd_Click" />
+                </StackPanel>
+                <StackPanel Grid.Column="3" VerticalAlignment="Top" Height="45" Margin="11,90,9,0" Visibility="Collapsed" Name="dumy2">
+                    <Button Name="btnEdit" Padding="10" Background="#FF3F69E1" Foreground="White" FontFamily="Tahoma" BorderBrush="White" BorderThickness="2" Content="اعمال تغییر" Height="39" Click="btnEdit_Click" />
+                </StackPanel>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>

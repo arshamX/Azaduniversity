@@ -1,0 +1,89 @@
+﻿<Window x:Class="WPFUnivercity.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WPFUnivercity"
+        xmlns:persianDateControls="clr-namespace:Mohsen.PersianDateControls;assembly=Mohsen.PersianDateControls"
+        mc:Ignorable="d"
+        Title="دروس مجتمع" Height="450" Width="988" MaxWidth="1400" MaxHeight="450"  ResizeMode="NoResize">
+    <Grid Background="#3f69e1">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" MinWidth="201"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Border Background="#7f9cec" Grid.Column="0" BorderThickness="3" BorderBrush="White" Margin="3,3,3,3">
+            <StackPanel>
+                <Button Click="btnOrginal_Click" Name="btnOrginal" Margin="20px,10px" Padding="10px" Foreground="White" Background="#3f69e1" BorderBrush="White" BorderThickness="2" FontFamily="Tahoma">دورس اصلی</Button>
+                <Button Click="btnMojtama_Click" Name="btnMojtama" Margin="20px,10px" Padding="10px" Foreground="White" Background="#3f69e1" BorderBrush="White" BorderThickness="2" FontFamily="Tahoma">دروس مجتمع</Button>
+                <Image Source="Resurce\Islamic_Azad_University_logo_(2).png" Height="115" Margin="0,100,0,0"/>
+            </StackPanel>
+        </Border>
+        <Border Background="#7f9cec" Grid.Column="1" BorderThickness="3" BorderBrush="White" Margin="3,3,3,3" Name="brdOrginal" Visibility="Visible">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="41*"/>
+                    <RowDefinition Height="302*"/>
+                    <RowDefinition Height="81*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal"  Margin="0,0,0,2" HorizontalAlignment="Center" Width="113">
+                    <Label FontFamily="Tahoma" Foreground="White" FontSize="20" Content="دروس اصلی"/>
+                </StackPanel>
+                <DockPanel Grid.Row="1">
+                    <DataGrid Name="dgOLessons" Grid.Row="1" Margin="10,10,10,10" Width="612" FontFamily="Tahoma" IsReadOnly="True"/>
+                </DockPanel>
+                <Grid Grid.Row="2" Margin="0,12,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="268*"/>
+                        <ColumnDefinition Width="223*"/>
+                        <ColumnDefinition Width="284*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Orientation="Horizontal" Grid.Column="1" Margin="0,0,0,10">
+                        <Button Name="btnEditOrg" Grid.Column="1" FontFamily="Tahoma" Background="#FF3F69E1" Foreground="White" BorderBrush="White" BorderThickness="2" Width="108" Margin="0,0,2,0" Click="btnEditOrg_Click">تغییر دادن</Button>
+                        <Button Name="btnAddOrg" Grid.Column="1" FontFamily="Tahoma" Background="#FF3F69E1" Foreground="White" BorderBrush="White" BorderThickness="2" Width="108" Click="btnAddOrg_Click">اضافه کردن</Button>
+                    </StackPanel>
+
+                </Grid>
+            </Grid>
+        </Border>
+        <Border Background="#7f9cec" Grid.Column="1" BorderThickness="3" BorderBrush="White" Margin="3,3,3,3" Name="brdMojtama" Visibility="Collapsed">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="41*"/>
+                    <RowDefinition Height="302*"/>
+                    <RowDefinition Height="81*"/>
+                </Grid.RowDefinitions>
+                <StackPanel Grid.Row="0" Orientation="Horizontal" Margin="0,0,0,2" HorizontalAlignment="Center" Width="121">
+                    <Label FontSize="20" FontFamily="Tahoma" Foreground="White" Content="کلاس ها"/>
+                </StackPanel>
+                <DockPanel Grid.Row="1" Margin="0,0,-3,0">
+                    <DataGrid Name="dgALessons" Margin="10,10,10,10" FontFamily="Tahoma" IsReadOnly="True" SelectedCellsChanged="dgALessons_SelectedCellsChanged"/>
+                </DockPanel>
+                <Grid Grid.Row="2" Margin="0,3,0,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="262*"/>
+                        <ColumnDefinition Width="225*"/>
+                        <ColumnDefinition Width="290*"/>
+                    </Grid.ColumnDefinitions>
+                    <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,0,10">
+                        <Grid Width="222">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <DockPanel Grid.Column="0">
+                                <Button Click="Button_Click" Padding="10px" Foreground="White" Background="#3f69e1" BorderBrush="White" BorderThickness="2" FontFamily="Tahoma" Width="104">خروجی اکسل</Button>
+                            </DockPanel>
+                            <DockPanel Grid.Column="1" Margin="4,0,0,0" Name="bt1" Visibility="Visible">
+                                <Button Click="btnAdd_Click" Name="btnAdd" Padding="10px" Foreground="White" Background="#3f69e1" BorderBrush="White" BorderThickness="2" FontFamily="Tahoma" Width="98">اضافه کردن</Button>
+                            </DockPanel>
+                            <DockPanel Grid.Column="1" Margin="4,0,0,0" Name="bt2" Visibility="Collapsed">
+                                <Button Click="btnEdit_Click" Name="btnEdit" Padding="10px" Foreground="White" Background="#3f69e1" BorderBrush="White" BorderThickness="2" FontFamily="Tahoma" Width="98">تغییر</Button>
+                            </DockPanel>
+                        </Grid>
+                    </StackPanel>
+                </Grid>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
